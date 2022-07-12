@@ -25,4 +25,4 @@ class Visualizer:
             pygame.draw.circle(self.screen, self.dot_color, [element, index], self.dot_size, 0)
         
         pygame.display.flip()
-        sleep(0.005)
+        sleep(0.001)

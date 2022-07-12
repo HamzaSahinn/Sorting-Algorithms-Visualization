@@ -57,19 +57,78 @@ class Quick_Sort:
 
 
 class Insertion_Sort:
-    def __init__(self, sorting_list:list) -> None:
+    def __init__(self, sorting_list:list, game:Visualizer) -> None:
         self.sorting_list = sorting_list
+        self.game_visalizer = game
     
-    def iter_one_step() -> list:
-        pass
+    def run_sort(self) -> None:
+        for index in range(1, len(self.sorting_list)):
+ 
+            key = self.sorting_list[index]
+    
+            point_index = index - 1
+            while point_index >=0 and key < self.sorting_list[point_index] :
+                    self.sorting_list[point_index+1] = self.sorting_list[point_index]
+                    self.game_visalizer.update_state(self.sorting_list)
+                    point_index -= 1
+            self.sorting_list[point_index+1] = key
 
 
 class Merge_Sort:
-    def __init__(self, sorting_list:list) -> None:
+    def __init__(self, sorting_list:list, game:Visualizer) -> None:
         self.sorting_list = sorting_list
+        self.game_visalizer = game
+        
+    def merge(self, l, m, r):
+        n1 = m - l + 1
+        n2 = r - m
     
-    def iter_one_step() -> list:
-        pass
+        L = [0] * (n1)
+        R = [0] * (n2)
+    
+        for i in range(0, n1):
+            L[i] = self.sorting_list[l + i]
+    
+        for j in range(0, n2):
+            R[j] = self.sorting_list[m + 1 + j]
+    
+        i = 0 
+        j = 0 
+        k = l 
+    
+        while i < n1 and j < n2:
+            if L[i] <= R[j]:
+                self.sorting_list[k] = L[i]
+                i += 1
+            else:
+                self.sorting_list[k] = R[j]
+                j += 1
+            
+            self.game_visalizer.update_state(self.sorting_list)
+            k += 1
+    
+        while i < n1:
+            self.sorting_list[k] = L[i]
+            i += 1
+            k += 1
+            self.game_visalizer.update_state(self.sorting_list)
+            
+        while j < n2:
+            self.sorting_list[k] = R[j]
+            j += 1
+            k += 1
+            self.game_visalizer.update_state(self.sorting_list)
+    
+    def mergeSort(self, l, r):
+        if l < r:
+            m = l+(r-l)//2
+    
+            self.mergeSort(l, m)
+            self.mergeSort(m+1, r)
+            self.merge(l, m, r)
+        
+    def run_sort(self) -> None:
+        self.mergeSort(0, len(self.sorting_list)-1)
 
 
 class Bubble_Sort:

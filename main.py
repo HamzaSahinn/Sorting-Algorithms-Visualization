@@ -11,7 +11,7 @@ def is_sorted(sorted_list):
 
 game = Visualizer()
 sorting_list = random.sample(range(0, 400), 400)
-sorter_object = sorting.Quick_Sort(sorting_list, game)
+sorter_object = sorting.Merge_Sort(sorting_list, game)
 
 
 game.init_elements(sorting_list)
