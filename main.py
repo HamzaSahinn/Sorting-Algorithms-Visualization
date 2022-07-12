@@ -1,20 +1,21 @@
 from time import sleep
-from sorting import *
-from ploting import Visualize_Game
+from ploting import Visualizer
 import random
+import sorting
+import importlib
+importlib.reload(sorting)
 
 
 def is_sorted(sorted_list):
     return all(sorted_list[i] <= sorted_list[i+1] for i in range(len(sorted_list) - 1))
 
-game = Visualize_Game()
+game = Visualizer()
 sorting_list = random.sample(range(0, 400), 400)
-sorter_object = Selection_Sort(sorting_list)
+sorter_object = sorting.Quick_Sort(sorting_list, game)
+
 
 game.init_elements(sorting_list)
-
 while not is_sorted(sorting_list):
-    game.update_state(sorter_object.iter_one_step())
-    sleep(0.05)
+    sorter_object.run_sort()
 
-print(sorter_object.get_benchmark())
+
