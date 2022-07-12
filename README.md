@@ -4,7 +4,6 @@ This repo contains some sorting algorithms' implementations. Also, sorting techn
 Currently there are only six sorting algorithms included (selection, quick, insertion, merge, bubble, heap).
 Some example visuals are presented below
 
-<img src="(https://github.com/HamzaSahinn/Sorting-Algorithms-Visualization/blob/main/images/heap_sort_1.png)" width="200" height="400" />
-![alt text](https://github.com/HamzaSahinn/Sorting-Algorithms-Visualization/blob/main/images/heap_sort_1.png)
+![alt text](https://github.com/HamzaSahinn/Sorting-Algorithms-Visualization/blob/main/images/heap_sort_1.png "Heap Sort First Steps")
 
-![alt text](https://github.com/HamzaSahinn/Sorting-Algorithms-Visualization/blob/main/images/heap_sort_2.png)
+![alt text](https://github.com/HamzaSahinn/Sorting-Algorithms-Visualization/blob/main/images/heap_sort_2.png "Heap Sort Mid Steps")
