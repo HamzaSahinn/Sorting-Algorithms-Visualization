@@ -132,16 +132,53 @@ class Merge_Sort:
 
 
 class Bubble_Sort:
-    def __init__(self, sorting_list:list) -> None:
+    def __init__(self, sorting_list:list, game:Visualizer) -> None:
         self.sorting_list = sorting_list
+        self.game_visalizer = game
     
-    def iter_one_step() -> list:
-        pass
+    def run_sort(self) -> None:
+        list_size = len(self.sorting_list)
+        swapped = False
 
+        for first_index in range(list_size - 1):
+            for second_index in range(0, list_size - first_index - 1):
+                if self.sorting_list[second_index] > self.sorting_list[second_index + 1]:
+                    swapped = True
+                    self.sorting_list[second_index], self.sorting_list[second_index + 1] = self.sorting_list[second_index + 1], self.sorting_list[second_index]
+                    self.game_visalizer.update_state(self.sorting_list)
+            if not swapped:
+                return
+        
 
 class Heap_Sort:
-    def __init__(self, sorting_list:list) -> None:
+    def __init__(self, sorting_list:list, game:Visualizer) -> None:
         self.sorting_list = sorting_list
+        self.game_visualizer = game
     
-    def iter_one_step() -> list:
-        pass
+    def heapify(self, n, i): 
+        largest = i 
+        l = 2 * i + 1 
+        r = 2 * i + 2 
+         
+        if l < n and self.sorting_list[i] < self.sorting_list[l]: 
+            largest = l 
+         
+        if r < n and self.sorting_list[largest] < self.sorting_list[r]: 
+            largest = r 
+         
+        if largest != i: 
+            self.sorting_list[i],self.sorting_list[largest] = self.sorting_list[largest],self.sorting_list[i]
+            self.game_visualizer.update_state(self.sorting_list) 
+         
+            self.heapify(n, largest) 
+    
+    def run_sort(self) -> None:
+        list_size = len(self.sorting_list) 
+        
+        for i in range(list_size // 2 - 1, -1, -1): 
+            self.heapify(list_size, i) 
+        
+        for i in range(list_size-1, 0, -1): 
+            self.sorting_list[i], self.sorting_list[0] = self.sorting_list[0], self.sorting_list[i] 
+            self.game_visualizer.update_state(self.sorting_list)
+            self.heapify(i, 0) 

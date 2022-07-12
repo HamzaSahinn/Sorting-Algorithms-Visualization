@@ -2,12 +2,13 @@ from time import sleep
 import pygame
 
 class Visualizer:
-    def __init__(self, screen_width=400, screen_height=400, dot_color=[255,255,255], dot_size=1, bg_color=[0,0,0]) -> None:
+    def __init__(self, screen_width=400, screen_height=400, dot_color=[255,255,255], dot_size=1, bg_color=[0,0,0], sleep_time=0) -> None:
         
         self.screen_size = (screen_width, screen_height)
         self.dot_color = dot_color
         self.dot_size = dot_size
         self.bg_color = bg_color
+        self.sleep_time = sleep_time
         
         pygame.init()
         
@@ -25,4 +26,4 @@ class Visualizer:
             pygame.draw.circle(self.screen, self.dot_color, [element, index], self.dot_size, 0)
         
         pygame.display.flip()
-        sleep(0.001)
+        sleep(self.sleep_time)
